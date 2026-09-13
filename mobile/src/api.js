@@ -1,6 +1,6 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
-const BASE = 'http://192.168.0.101:5000'; // ← YOUR laptop's LAN IP on the same Wi-Fi
+const BASE = 'https://salon-managment-yi1q.onrender.com'; // ← YOUR laptop's LAN IP on the same Wi-Fi
 
 async function request(path, { method = 'GET', body } = {}) {
     const token = await AsyncStorage.getItem('token');
