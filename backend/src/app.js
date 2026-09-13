@@ -11,13 +11,28 @@ const serviceRoutes = require('./routes/service.routes');
 const attendanceRoutes = require('./routes/attendance.routes');
 const staffRoutes = require('./routes/staff.routes');
 
+const allowedOrigins = [
+    'http://localhost:5173',
+    'https://salon-managment-navy.vercel.app',
+];
+
 function createApp() {
     const app = express();
-    app.use(cors());
+
+    // CORS
+    app.use(cors({
+        origin: allowedOrigins,
+        credentials: true,
+        methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
+        allowedHeaders: ['Content-Type', 'Authorization'],
+    }));
+
     app.use(express.json());
     app.use(morgan('dev'));
 
-    app.get('/health', (_req, res) => res.json({ ok: true }));
+    app.get('/health', (_req, res) => {
+        res.json({ ok: true });
+    });
 
     app.use('/auth', authRoutes);
     app.use('/plans', planRoutes);
@@ -29,13 +44,18 @@ function createApp() {
     app.use('/staff', staffRoutes);
 
     // 404
-    app.use((_req, res) => res.status(404).json({ error: 'NOT_FOUND' }));
+    app.use((_req, res) => {
+        res.status(404).json({ error: 'NOT_FOUND' });
+    });
 
-    // error handler
-    // eslint-disable-next-line no-unused-vars
+    // Error handler
     app.use((err, _req, res, _next) => {
         console.error('[error]', err);
-        res.status(500).json({ error: 'SERVER_ERROR', message: err.message });
+
+        res.status(500).json({
+            error: 'SERVER_ERROR',
+            message: err.message,
+        });
     });
 
     return app;
