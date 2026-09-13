@@ -51,12 +51,12 @@ export default function Login() {
 
                 <button type="submit">Sign in</button>
 
-                <div className="login-hint">
+                {/* <div className="login-hint">
                     <div><strong>Demo logins</strong></div>
                     <div>Super Admin: <code>admin@salon.test</code> / <code>admin123</code></div>
                     <div>Owner: <code>owner@salon.test</code> / <code>owner123</code></div>
                     <div>Receptionist: <code>reception@salon.test</code> / <code>recep123</code></div>
-                </div>
+                </div> */}
             </form>
         </div>
     );

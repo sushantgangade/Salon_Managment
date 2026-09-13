@@ -58,12 +58,12 @@ export default function LoginScreen() {
                 {busy ? <ActivityIndicator color="#fff" /> : <Text style={s.btnText}>Sign in</Text>}
             </Pressable>
 
-            <View style={s.hint}>
+            {/* <View style={s.hint}>
                 <Text style={s.hintTitle}>Demo logins</Text>
                 <Text style={s.hintLine}>Owner: owner@salon.test / owner123</Text>
                 <Text style={s.hintLine}>Receptionist: reception@salon.test / recep123</Text>
                 <Text style={s.hintLine}>(Super Admin uses the web panel)</Text>
-            </View>
+            </View> */}
         </KeyboardAvoidingView>
     );
 }
