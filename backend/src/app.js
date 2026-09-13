@@ -30,6 +30,12 @@ function createApp() {
     app.use(express.json());
     app.use(morgan('dev'));
 
+    app.get('/', (_req, res) => {
+        res.json({
+            message: 'Salon Management API is running'
+        });
+    });
+
     app.get('/health', (_req, res) => {
         res.json({ ok: true });
     });
